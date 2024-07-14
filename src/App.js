@@ -13,13 +13,13 @@ function App() {
     return `${minutes}:${paddedSeconds}`;
   };
 
-  const startTimer = () => {
+  const handleStartTimer = () => {
     intervalId.current = setInterval(() => {
       setTimer((remaining) => new Date(remaining - 1000));
     }, 1000);
   };
 
-  const stopTimer = () => {
+  const handleStopTimer = () => {
     if (intervalId === null) {
       return;
     }
@@ -27,7 +27,7 @@ function App() {
     intervalId.current = null;
   };
 
-  const resetTimer = () => {
+  const handleResetTimer = () => {
     if (intervalId.current !== null) {
       clearInterval(intervalId.current);
     }
@@ -52,9 +52,9 @@ function App() {
           justifyContent: "space-between",
         }}
       >
-        <button onClick={() => startTimer()}>Start</button>
-        <button onClick={() => stopTimer()}>Stop</button>
-        <button onClick={() => resetTimer()}>Reset</button>
+        <button onClick={() => handleStartTimer()}>Start</button>
+        <button onClick={() => handleStopTimer()}>Stop</button>
+        <button onClick={() => handleResetTimer()}>Reset</button>
       </div>
     </div>
   );
